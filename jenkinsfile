@@ -1,0 +1,54 @@
+pipeline {
+  agent any
+  stages {
+
+        stage('Build') {
+            steps {
+                sh '''
+                    ./jenkins/build/mvnbuild.bash mvn -B -DskipTests clean package
+                '''
+            }
+
+            post {
+                success {
+                   archiveArtifacts artifacts: 'CI-pipe/target/*.jar', fingerprint: true
+                }
+            }
+        }
+
+
+    stage('Test') {
+            steps {
+                sh './jenkins/test/mvntest.bash mvn test'
+            }
+
+        }
+
+    stage('SonarCloud') {
+      environment {
+        SCANNER_HOME = tool 'sonarqube'
+        SONAR_TOKEN = credentials('sonarqube')
+        ORGANIZATION = "opstree"
+        PROJECT_NAME = "opstree"
+      }
+      steps {
+        withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'sonarqube') {
+            sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+            -Dsonar.java.binaries=build/classes/java/ \
+            -Dsonar.projectKey=$PROJECT_NAME \
+            -Dsonar.sources=.'''
+        }
+      }
+    }
+
+    stage("Quality Gate") {
+      steps {
+        timeout(time: 1, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+      }
+    }
+
+  }
+  
+}
