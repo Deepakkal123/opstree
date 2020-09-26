@@ -20,7 +20,7 @@ pipeline {
 
     stage('Test') {
             steps {
-                sh './simple-java-maven-app/jenkins/test/mvntest.bash mvn test'
+                sh ' bash ./simple-java-maven-app/jenkins/test/mvntest.bash mvn test'
             }
 
         }
