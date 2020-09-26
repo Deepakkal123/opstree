@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+				      chmod +x -R ${env.WORKSPACE}
                     ./simple-java-maven-app/jenkins/build/mvnbuild.bash mvn -B -DskipTests clean package
                 '''
             }
