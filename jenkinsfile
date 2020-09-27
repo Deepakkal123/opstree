@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh '''
 				      
-                    bash ./simple-java-maven-app/jenkins/build/mvnbuild.bash mvn -B -DskipTests clean package
+                    bash ./simple-java-maven-app/jenkins/build/mvnbuild.bash mvn -B -DskipTests clean package -Dbuild.number=${BUILD_NUMBER}
                 '''
             }
 
