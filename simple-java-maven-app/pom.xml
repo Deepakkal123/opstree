@@ -18,13 +18,15 @@
   
   <distributionManagement>
 		 <snapshotRepository>
-		    <id>nexus</id>
+		    <id>deployment</id>
+			<name>Internal Releases</name>
 		    <url>http://192.168.0.110:8081/repository/opstree/</url>
 		 </snapshotRepository>
-		 <Repository>
-		    <id>nexus</id>
-		    <url>http://192.168.0.110:8081/repository/opstree/</url>
-		 </Repository>
+		 <repository>
+            <id>deployment</id>
+            <name>Internal Releases</name>
+            <url>http://192.168.0.110:8081/repository/opstree/</url>
+        </repository>
   	</distributionManagement>
   
   
