@@ -33,7 +33,7 @@ pipeline {
         PROJECT_NAME = "opstree"
       }
       steps {
-        withSonarQubeEnv(credentialsId: 'sonarqube2') {
+        withSonarQubeEnv('sonarqube2') {
             sh '''"${scannerHome}/bin/sonar-scanner" 
 			-Dsonar.organization=$ORGANIZATION \
 			-Dsonar.projectName=opstree
