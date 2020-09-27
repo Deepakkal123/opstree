@@ -12,7 +12,7 @@ pipeline {
 
             post {
                 success {
-                   archiveArtifacts artifacts: 'CI-pipe/target/*.jar', fingerprint: true
+                   archiveArtifacts artifacts: 'CI-pipe/simple-java-maven-app/target/*.jar', fingerprint: true
                 }
             }
         }
