@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>my-app</name>
   <url>http://maven.apache.org</url>
@@ -32,9 +32,12 @@
   
   <build>
   <plugins>
-     <plugin>
-    <artifactId>maven-war-plugin</artifactId>
-    <configuration>
+      <plugin>
+        <!-- Build an executable JAR -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
@@ -43,9 +46,7 @@
             </manifest>
           </archive>
         </configuration>
-        
-</plugin>
-      
+      </plugin>
 	  <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
