@@ -25,7 +25,7 @@ pipeline {
 
         }
 
-    stage('SonarCloud') {
+    stage('sonarqube') {
       environment {
         SCANNER_HOME = tool 'sonarqube'
         SONAR_TOKEN = credentials('sonarqube')
