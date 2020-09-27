@@ -32,17 +32,15 @@ pipeline {
     }
           
      } 
-      
-
-    
-
-    steps {
+	 stage('SonarQube '){
+       steps {
         withSonarQubeEnv('sonarqube_server') {
             sh "/var/jenkins_home/sonar-scanner/sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner"
         }        timeout(time: 1, unit: 'MINUTES') {
             waitForQualityGate abortPipeline: false
         }
     }
+	}
   
 }
 
