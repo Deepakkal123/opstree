@@ -25,22 +25,17 @@ pipeline {
 
         }
 
-    stage('sonarqube') {
-	
-	environment {
-        SCANNER_HOME = "/var/jenkins_home/sonar-scanner/sonar-scanner-3.3.0.1492-linux"
-        SONAR_TOKEN = credentials('sonarqube')
-        ORGANIZATION = "opstree"
-        PROJECT_NAME = "opstree"
-      }
-	   steps {
-                def scannerHome = tool 'sonarqube'
-                withSonarQubeEnv('sonarqube_server') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
+    stage("build & SonarQube analysis") {
+            agent any
+            steps {
+              withSonarQubeEnv('sonarqube_server') {
+                sh 'mvn clean package sonar:sonar'
+              }
+            }
+          
       
       }
-    }
+    
 
     stage("Quality Gate") {
       steps {
