@@ -16,6 +16,19 @@
     </dependency>
   </dependencies>
   <build>
+  <distributionManagement>
+        <repository>
+            <id>deployment</id>
+            <name>opstree</name>
+            <url>http://192.168.0.110:8081/repository/opstree/</url>
+        </repository>
+        <snapshotRepository>
+            <id>deployment</id>
+            <name>opstree</name>
+            <url>http://192.168.0.110:8081/repository/opstree/</url>
+        </snapshotRepository>
+    </distributionManagement>
+  <dependencies>
     <plugins>
       <plugin>
         <!-- Build an executable JAR -->
