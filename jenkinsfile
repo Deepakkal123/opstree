@@ -36,7 +36,7 @@ pipeline {
 	stage('upload to nexus') {
 	
 		steps {
-		  nexusArtifactUploader {
+		  sh "
 			nexusVersion('nexus3')
 			protocol('http')
 			nexusUrl('192.168.0.110:8081')
@@ -49,7 +49,7 @@ pipeline {
 				type('jar')
 				classifier('debug')
 				file('my-app-1.0-SNAPSHOT.jar')
-        }
+              "
        
         }
       }
