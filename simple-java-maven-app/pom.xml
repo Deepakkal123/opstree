@@ -20,12 +20,12 @@
 		 <snapshotRepository>
 		    <id>deployment</id>
 			<name>Internal Releases</name>
-		    <url>http://192.168.0.110:8081/repository/opstree/</url>
+		    <url>http://192.168.0.110:8081/repository/com/</url>
 		 </snapshotRepository>
 		 <repository>
             <id>deployment</id>
             <name>Internal Releases</name>
-            <url>http://192.168.0.110:8081/repository/opstree/</url>
+            <url>http://192.168.0.110:8081/repository/com/</url>
         </repository>
   	</distributionManagement>
   
