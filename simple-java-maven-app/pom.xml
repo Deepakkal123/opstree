@@ -46,6 +46,9 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.6.1</version>
             <configuration>
+			    <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>com.mycompany.app.App</mainClass>
                 <source>1.7</source>
                 <target>1.7</target>
             </configuration>
