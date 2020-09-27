@@ -33,7 +33,28 @@ pipeline {
           
      } 
 	
-    
+	stage('upload to nexus') {
+	
+		steps {
+		  nexusArtifactUploader {
+			nexusVersion('nexus3')
+			protocol('http')
+			nexusUrl('192.168.0.110:8081')
+			groupId('sp.sd')
+			version('2.4')
+			repository('opstree')
+			credentialsId('nexus')
+			artifact {
+				artifactId('my-app')
+				type('jar')
+				classifier('debug')
+				file('my-app-1.0-SNAPSHOT.jar')
+        }
+       
+        }
+      }
+    }
+    }
 	
   
 }
