@@ -27,13 +27,13 @@ pipeline {
 
     stage('sonarqube') {
       environment {
-        SCANNER_HOME = tool 'sonarqube2'
-        SONAR_TOKEN = credentials('sonarqube2')
+        SCANNER_HOME = "/var/jenkins_home/sonar-scanner"
+        SONAR_TOKEN = credentials('sonarqube')
         ORGANIZATION = "opstree"
         PROJECT_NAME = "opstree"
       }
       steps {
-        withSonarQubeEnv('sonarqube2') {
+        withSonarQubeEnv('sonarqube') {
             sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
 			-Dsonar.projectName=opstree
             -Dsonar.java.binaries=build/classes/java/ \
