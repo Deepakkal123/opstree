@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+  stages {
+
+        stage('Download') {
+            steps {
+                sh '''
+				      
+                    bash ./simple-java-maven-app/jenkins/build/deploy.bash
+                '''
+            }
+
+        }
+  
+}
+
+}
