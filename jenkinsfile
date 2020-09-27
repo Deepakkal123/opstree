@@ -27,10 +27,14 @@ pipeline {
 
     stage('sonarqube') {
       environment {
-        SCANNER_HOME = tool 'SonarQube Scanner 2.8'
+        scannerHome = "SonarQube Scanner 2.8"
         SONAR_TOKEN = credentials('sonarqube2')
         ORGANIZATION = "opstree"
         PROJECT_NAME = "opstree"
+      }
+	  
+	  tools {
+        sonarQube 'SonarQube Scanner 2.8'
       }
       steps {
         withSonarQubeEnv('sonarqube2') {
