@@ -27,14 +27,16 @@ pipeline {
 
     stage('sonarqube') {
       environment {
-        SCANNER_HOME = tool 'sonarqube'
-        SONAR_TOKEN = credentials('sonarqube')
+        SCANNER_HOME = tool 'SonarQube Scanner 2.8'
+        SONAR_TOKEN = credentials('sonarqube2')
         ORGANIZATION = "opstree"
         PROJECT_NAME = "opstree"
       }
       steps {
-        withSonarQubeEnv('sonarqube') {
-            sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+        withSonarQubeEnv(credentialsId: 'sonarqube2') {
+            sh '''"${scannerHome}/bin/sonar-scanner" 
+			-Dsonar.organization=$ORGANIZATION \
+			-Dsonar.projectName=opstree
             -Dsonar.java.binaries=build/classes/java/ \
             -Dsonar.projectKey=$PROJECT_NAME \
             -Dsonar.sources=/home/deepak/jenkins/jenkins_data/jenkins_home/workspace/CI-pipe/simple-java-maven-app/target/*.jar
