@@ -27,7 +27,7 @@ pipeline {
 
     stage('sonarqube') {
       environment {
-        SCANNER_HOME = "/var/jenkins_home/sonar-scanner"
+        SCANNER_HOME = "/var/jenkins_home/sonar-scanner/sonar-scanner-3.3.0.1492-linux"
         SONAR_TOKEN = credentials('sonarqube')
         ORGANIZATION = "opstree"
         PROJECT_NAME = "opstree"
