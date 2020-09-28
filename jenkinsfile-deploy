@@ -13,6 +13,14 @@ pipeline {
 
         }
   
-}
 
+
+     stage('Rebuild') {
+            steps {
+                sh ' bash ./simple-java-maven-app/jenkins/build/createimage.bash'
+            }
+
+        }
+
+}
 }
