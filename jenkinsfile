@@ -35,7 +35,7 @@ pipeline {
 	
     stage('deploy') {
             steps {
-                sh ' bash ./simple-java-maven-app/jenkins/test/mvndeploy.bash mvn deploy'
+                sh ' bash ./simple-java-maven-app/jenkins/test/mvndeploy.bash mvn deploy -Dbuild.number=$BUILD_NUMBER'
             }
 	}
   
