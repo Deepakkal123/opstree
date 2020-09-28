@@ -1,5 +1,8 @@
+agentName = "slave"
+agentLabel = "${-> println 'Right Now the Agent Name is ' + agentName; return agentName}"
+
 pipeline {
-  agent { label 'slave​' }
+  node { agentLabel as String }
   stages {
 
         stage('Download') {
