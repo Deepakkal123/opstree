@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh '''
 				      
-                    bash ./simple-java-maven-app/jenkins/build/deploy.bash
+                    bash ./simple-java-maven-app/jenkins/build/deploy.bash ${params.Artifacts}
                 '''
             }
 
@@ -20,7 +20,7 @@ pipeline {
      stage('Rebuild') {
 	    
             steps {
-                sh ' bash ./simple-java-maven-app/jenkins/build/createimage.bash ${params.Artifacts}"'
+                sh ' bash ./simple-java-maven-app/jenkins/build/createimage.bash'
             }
 
         }
