@@ -1,6 +1,8 @@
 pipeline {
   agent any
-  
+  parameters {
+         string defaultValue: 'my-app-1.0-20200928.135504-6.jar', description: 'Name of Artifacts', name: 'Artifacts', trim: false
+		   }
   stages {
 
         stage('Download') {
@@ -16,9 +18,7 @@ pipeline {
 
 
      stage('Rebuild') {
-	    parameters {
-         string defaultValue: 'my-app-1.0-20200928.135504-6.jar', description: 'Name of Artifacts', name: 'Artifacts', trim: false
-		   }
+	    
             steps {
                 sh ' bash ./simple-java-maven-app/jenkins/build/createimage.bash ${params.Artifacts}"'
             }
