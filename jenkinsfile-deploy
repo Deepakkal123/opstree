@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh '''
 				      
-                    bash ./simple-java-maven-app/jenkins/build/deploy.bash ${params.Artifacts}
+                    bash ./simple-java-maven-app/jenkins/build/deploy.bash ${Artifacts}
                 '''
             }
 
